@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Student List</h1>
+<ul id="studentList"></ul>
+
+<script>
+fetch('https://3.95.151.156/students/all')
+  .then(response => response.json())
+  .then(data => {
+    const list = document.getElementById('studentList');
+    data.forEach(student => {
+      const item = document.createElement('li');
+      item.textContent = `${student.first_name} ${student.last_name}`;
+      list.appendChild(item);
+    });
+  })
+  .catch(error => console.error('Error:', error));
+</script>
+</body>
+</html>
